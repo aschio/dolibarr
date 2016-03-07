@@ -14,4 +14,6 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ALTER TABLE llx_societe_plus_sostenitore ADD UNIQUE INDEX uk_fk_othertable (fk_othertable);
+ALTER TABLE llx_societe_plus_sostenitore ADD INDEX idx_societe_plus_fk_soc (fk_soc);
+ALTER TABLE llx_societe_plus_sostenitore ADD CONSTRAINT fk_societe_plus_sostenitore_fk_soc FOREIGN KEY (fk_soc) REFERENCES llx_societe (rowid);
+

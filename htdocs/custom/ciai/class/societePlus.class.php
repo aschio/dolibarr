@@ -17,30 +17,35 @@
  */
 
 /**
- * 	\file		class/myclass.class.php
+ * 	\file		class/societePlus.class.php
  * 	\ingroup	ciai
- * 	\brief		This file is an example CRUD class file (Create/Read/Update/Delete)
- * 				Put some comments here
+ * 	\brief		File per gestione delle anagrafiche specifiche (Create/Read/Update/Delete)
+ * 				
  */
-// Put here all includes required by your class file
-//require_once DOL_DOCUMENT_ROOT."/core/class/commonobject.class.php";
-//require_once DOL_DOCUMENT_ROOT."/societe/class/societe.class.php";
+
+// 
+
+require_once DOL_DOCUMENT_ROOT."/societe/class/societe.class.php";
 //require_once DOL_DOCUMENT_ROOT."/product/class/product.class.php";
+//require_once DOL_DOCUMENT_ROOT."/core/class/commonobject.class.php";
 
 /**
- * Put your class' description here
+ * Estende la classe Societe per gestire le anagrafiche
  */
-class SocietePlus // extends CommonObject
+class SocietePlus extends Societe
 {
 
-	private $db; //!< To store db handler
+	public $db; //!< To store db handler
 	public $error; //!< To return error code (or message)
 	public $errors = array(); //!< To return several error codes (or messages)
-	//public $element='skeleton';	//!< Id that identify managed objects
-	//public $table_element='skeleton';	//!< Name of table without prefix where object is stored
-	public $id;
-	public $prop1;
-	public $prop2;
+	public $element_sostenitore='societe_plus_sostenitore';			// !< Id that identify managed objects
+	public $table_element_sostenitore='societe_plus_sostenitore';	 // !< Name of table without prefix where object is stored
+	
+	public $fk_soc;	// fk tabella societe
+	
+	
+	// SOSTENITORE
+	public $traduzione;
 
 	/**
 	 * Constructor
@@ -67,18 +72,13 @@ class SocietePlus // extends CommonObject
 		$error = 0;
 
 		// Clean parameters
-		if (isset($this->prop1)) {
-			$this->prop1 = trim($this->prop1);
-		}
-		if (isset($this->prop2)) {
-			$this->prop2 = trim($this->prop2);
+		if (isset($this->sostenitore)) {
+			$this->sostenitore = trim($this->sostenitore);
 		}
 
-		// Check parameters
-		// Put here code to add control on parameters values
 		// Insert request
 		$sql = "INSERT INTO " . MAIN_DB_PREFIX . "mytable(";
-		$sql.= " field1,";
+		$sql.= " fk_soc,";
 		$sql.= " field2";
 
 		$sql.= ") VALUES (";
