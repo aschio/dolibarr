@@ -1,4 +1,4 @@
--- <one line to give the program's name and a brief idea of what it does.>
+-- CIAI GESTIONALE
 -- -- Copyright (C) 2016 Claudio Aschieri <c.aschieri@19.coop>
 --
 -- This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,9 @@
 
 CREATE TABLE llx_societe_plus_sostenitore (
 	rowid INTEGER AUTO_INCREMENT PRIMARY KEY,
-	entity INTEGER DEFAULT 1 NOT NULL,
-	fk_othertable INTEGER NOT NULL,
-	name VARCHAR(189)
-);
+	fk_soc INTEGER NOT NULL,
+	traduzione VARCHAR(1) DEFAULT 0 NOT NULL,		-- traduzione richiesta si/no
+	sesso VARCHAR(1) DEFAULT 0 NOT NULL					-- sesso 0/1: femmina/maschio
+)ENGINE=innodb;
+
+

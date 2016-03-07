@@ -101,9 +101,9 @@ class modCiai extends DolibarrModules
 			// Set this to 1 if module has its own models directory
 			//'models' => 0,
 			// Set this to relative path of css if module has its own css file
-			'css' => array('ciai/css/mycss.css.php'),
+			'css' => array('ciai/css/ciai.css.php'),
 			// Set this to relative path of js file if module must load a js on all pages
-			// 'js' => array('ciai/js/ciai.js'),
+			 'js' => array('ciai/js/ciai.js'),
 			// Set here all hooks context managed by module
 			// 'hooks' => array('hookcontext1','hookcontext2'),
 			// To force the default directories names
