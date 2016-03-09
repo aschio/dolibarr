@@ -274,8 +274,8 @@ if ($action == 'create')
         // If javascript on, we show option individual
         if ($conf->use_javascript_ajax)
         {
-            print '<tr class="individualline"><td>'.fieldLabel('FirstName','firstname').'</td>';
-	        print '<td><input type="text" size="60" name="firstname" id="firstname" value="'.$object->firstname.'"></td>';
+            print '<tr class="individualline"><td class="fieldrequired">'.fieldLabel('FirstName','firstname').'</td>';
+	        print '<td><input type="text"  size="60" name="firstname" id="firstname" value="'.$object->firstname.'"></td>';
             print '<td colspan=2>&nbsp;</td></tr>';
            
             /*print '<tr class="individualline"><td>'.fieldLabel('UserTitle','civility_id').'</td><td>';
@@ -298,9 +298,9 @@ if ($action == 'create')
         
         			$idprof_mandatory ='SOCIETE_IDPROF'.($i).'_MANDATORY';
         			if(empty($conf->global->$idprof_mandatory))
-        				print '<td>'.fieldLabel($idprof,$key).'</td><td>';
-        				else
-        					print '<td>'.fieldLabel($idprof,$key,1).'</td><td>';
+        				print '<td class="fieldrequired">'.fieldLabel($idprof,$key).'</td><td>';
+        			else
+        				print '<td class="fieldrequired">'.fieldLabel($idprof,$key,1).'</td><td>';
         
         					print $formcompany->get_input_id_prof($i,$key,$object->$key,$object->country_code);
         					print '</td>';
