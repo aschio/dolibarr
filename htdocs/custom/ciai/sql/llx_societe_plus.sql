@@ -14,7 +14,7 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CREATE TABLE llx_societe_plus_sostenitore (
+CREATE TABLE llx_societe_plus (
 	rowid INTEGER AUTO_INCREMENT PRIMARY KEY,
 	fk_soc INTEGER NOT NULL,
 	traduzione VARCHAR(1) DEFAULT 0 NOT NULL,		-- traduzione richiesta si/no

@@ -1,5 +1,5 @@
 <?php
-/* <one line to give the program's name and a brief idea of what it does.>
+/* 
  * Copyright (C) 2016 Claudio Aschieri  <c.aschieri@¹9.coop>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,8 +23,6 @@
  * 				
  */
 
-// 
-
 require_once DOL_DOCUMENT_ROOT."/societe/class/societe.class.php";
 //require_once DOL_DOCUMENT_ROOT."/product/class/product.class.php";
 //require_once DOL_DOCUMENT_ROOT."/core/class/commonobject.class.php";
@@ -38,8 +36,8 @@ class SocietePlus extends Societe
 	public $db; //!< To store db handler
 	public $error; //!< To return error code (or message)
 	public $errors = array(); //!< To return several error codes (or messages)
-	public $element_sostenitore='societe_plus_sostenitore';			// !< Id that identify managed objects
-	public $table_element_sostenitore='societe_plus_sostenitore';	 // !< Name of table without prefix where object is stored
+	public $element_societeplus='societe_plus';			// !< Id that identify managed objects
+	public $table_element_societeplus='societe_plus';	 // !< Name of table without prefix where object is stored
 	
 	public $fk_soc;	// fk tabella societe
 	
@@ -75,7 +73,16 @@ class SocietePlus extends Societe
 		if (isset($this->sostenitore)) {
 			$this->sostenitore = trim($this->sostenitore);
 		}
-
+		
+		// inserisco i campi del padre
+		parent::create($user);
+		
+		// capisco che tipologia di soggetto terzo sto inserendo e inserisco i singoli campi
+				
+		echo "metodo: " .__METHOD__; exit; 
+		
+		// TODO Finire i singoli switch case
+		
 		// Insert request
 		$sql = "INSERT INTO " . MAIN_DB_PREFIX . "mytable(";
 		$sql.= " fk_soc,";
@@ -135,7 +142,17 @@ class SocietePlus extends Societe
 	 */
 	public function fetch($id)
 	{
-		global $langs;
+	    global $langs;
+	    
+	    // carico il padre prima di tutto
+	    parent::fetch($id);
+	    
+	    /* TO DO
+	     * Completare il caricamento dei campi figli con i singoli fetch
+	     */
+	    return 1;
+	    
+		
 		$sql = "SELECT";
 		$sql.= " t.rowid,";
 		$sql.= " t.field1,";

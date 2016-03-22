@@ -105,7 +105,7 @@ class modCiai extends DolibarrModules
 			// Set this to relative path of js file if module must load a js on all pages
 			 'js' => array('ciai/js/ciai.js'),
 			// Set here all hooks context managed by module
-			// 'hooks' => array('hookcontext1','hookcontext2'),
+			 'hooks' => array('thirdpartycard'), // 'hooks' => array('hookcontext1','hookcontext2'),
 			// To force the default directories names
 			// 'dir' => array('output' => 'othermodulename'),
 			// Set here all workflow context managed by module

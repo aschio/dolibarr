@@ -64,15 +64,15 @@ class ActionsCiai
 		$error = 0; // Error counter
 		$myvalue = 'test'; // A result value
 
-		print_r($parameters);
-		echo "action: " . $action;
-		print_r($object);
-
-		if (in_array('somecontext', explode(':', $parameters['context'])))
+		// è corretto ma non uso questo ma il trigger
+/*		if (in_array('thirdpartycard:globalcard:main', explode(':', $parameters['context'])))
 		{
-		  // do something only for the context 'somecontext'
+		  if ($action == 'add') // inserimento nuovo soggetto terzo
+		  {
+		      
+		  }
 		}
-
+*/
 		if (! $error)
 		{
 			$this->results = array('myreturn' => $myvalue);
