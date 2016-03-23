@@ -615,16 +615,20 @@ class InterfaceSocietePlusManage extends SocietePlusManage
 	 */
 	function companyCreate($action, $object, $user, $langs, $conf) {
 	    global $db;
-	    //dol_include_once('ciai/class/societePlus.class.php');
-	   
+	    dol_include_once('ciai/class/societePlus.class.php');
+
 	    $val = 0;   // return value
-	   
-	    $object_child = new SocietePlus($db);  
-	    $object_child->fk_soc = $object->rowid; 
-	   
-	    print_r($object_child );
 	    
-	    echo __METHOD__; exit;
+	    echo __METHOD__ ."<br><br><pre>";
+	    
+	    $object_child = new SocietePlus($db);  
+	    $object_child->fk_soc = $object->id; 
+	   
+	    $object_child->create($user);
+	    
+	    print_r($object );
+	    
+	     exit;
 	    
 	    return $val;
 	}
