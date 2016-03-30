@@ -41,6 +41,21 @@ class SocietePlus extends Societe
 	
 	public $fk_soc;	// fk tabella societe
 	
+	public $arrayType=array(); // array contenente i tipi di Anagrafica (cliente, fornitore, socio, volontario)
+	
+	/**
+	 * Tipi di soggetto terzo CIAI (non usati)
+	 */
+	const SOCIETE_PLUS_SOCIO       = 'socio';
+	const SOCIETE_PLUS_VOLONTARIO  = 'volontario';
+	const SOCIETE_PLUS_CLIENTE     = 'cliente';
+	const SOCIETE_PLUS_FORNITORE   = 'fornitore';
+	const SOCIETE_PLUS_SOSTENITORE = 'sostenitore';
+	const SOCIETE_PLUS_BAMBINO_SAD = 'Bambino_sad';
+	const SOCIETE_PLUS_BAMBINO_ADOZIONE = 'bambino_adozione';
+	// non vengono usati per ora
+	
+	
 	
 	// SOSTENITORE
 	public $traduzione;
@@ -70,16 +85,30 @@ class SocietePlus extends Societe
 		$error = 0;
 
 		// Clean parameters
-		if (isset($this->sostenitore)) {
-			$this->sostenitore = trim($this->sostenitore);
+		if (isset($this->traduzione)) {
+			$this->traduzione = trim($this->traduzione);
 		}
 		
 		// inserisco i campi del padre
-		parent::create($user);
+		// parent::create($user); no perchè arrivo dal trigger del padre
 		
 		// capisco che tipologia di soggetto terzo sto inserendo e inserisco i singoli campi
-				
-		echo "metodo: " .__METHOD__; exit; 
+		// le categorie vengono salvate dopo il create del Societe per cui devo ricavarle in altro modo		
+		// ad esempio le posso ricavare dal request
+		/*
+		[custcats] => Array
+		(
+		    [0] => 3
+		    [1] => 7
+		    )
+		*/
+		
+		// TODO
+		// completare il metodo di inserimento e
+		echo "metodo: " .__METHOD__; 
+		echo "<pre>"; print_r($_REQUEST);
+		
+		exit;
 		
 		// TODO Finire i singoli switch case
 		
@@ -179,6 +208,19 @@ class SocietePlus extends Societe
 
 			return -1;
 		}
+	}
+	
+	/**
+	 * Restituisce i tipi di anagrafica (categorie_custumer table)
+	 * 
+	 * 
+	 */
+	function getCategories() {
+	    
+	    $c = new Categorie($this->db);
+	    $cats = $c->containing($this->fk_soc, Categorie::TYPE_CUSTOMER);
+	    
+	    return $cats;
 	}
 
 	/**

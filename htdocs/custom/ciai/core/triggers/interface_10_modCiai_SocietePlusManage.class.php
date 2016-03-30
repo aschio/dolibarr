@@ -619,7 +619,7 @@ class InterfaceSocietePlusManage extends SocietePlusManage
 
 	    $val = 0;   // return value
 	    
-	    echo __METHOD__ ."<br><br><pre>";
+	    echo __METHOD__ ."<br><br>";
 	    
 	    $object_child = new SocietePlus($db);  
 	    $object_child->fk_soc = $object->id; 
