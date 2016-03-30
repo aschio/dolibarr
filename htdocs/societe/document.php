@@ -49,6 +49,10 @@ if ($user->societe_id > 0)
 }
 $result = restrictedArea($user, 'societe', $id, '&societe');
 
+// Initialize technical object to manage hooks of thirdparties. Note that conf->hooks_modules contains array array
+$hookmanager->initHooks(array('thirdpartydocuments'));
+
+
 // Get parameters
 $sortfield = GETPOST("sortfield",'alpha');
 $sortorder = GETPOST("sortorder",'alpha');

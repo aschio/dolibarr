@@ -38,6 +38,10 @@ $id = GETPOST('id')?GETPOST('id','int'):GETPOST('socid','int');
 if ($user->societe_id) $id=$user->societe_id;
 $result = restrictedArea($user, 'societe', $id, '&societe');
 
+// Initialize technical object to manage hooks of thirdparties. Note that conf->hooks_modules contains array array
+$hookmanager->initHooks(array('thirdpartynote'));
+
+
 $object = new Societe($db);
 if ($id > 0) $object->fetch($id);
 
